@@ -15,7 +15,7 @@ const ProductCard = ({ product }: PropType) => {
 
 				<div className="d-flex justify-content-end">
 					<Link
-						to={`/product/${product.id}`}
+						to={`/products/${product.id}`}
 						className="btn btn-outline-primary"
 					>
 						Detalles <i className="bi bi-chevron-right"></i>
