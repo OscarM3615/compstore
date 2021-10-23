@@ -8,8 +8,26 @@ class ApiService {
 		return products;
 	}
 
+	async getProduct(id: number): Promise<Product> {
+		const product = products.find((product) => product.id === id);
+
+		if (!product) throw new Error(`Product with ID ${id} not found.`);
+		return product;
+	}
+
+	async getProductsInCategory(categoryId: number): Promise<Product[]> {
+		return products.filter((product) => product.category.id === categoryId);
+	}
+
 	async getCategories(): Promise<Category[]> {
 		return categories;
+	}
+
+	async getCategory(id: number): Promise<Category> {
+		const category = categories.find((category) => category.id === id);
+
+		if (!category) throw new Error(`Category with ID ${id} not found.`);
+		return category;
 	}
 }
 

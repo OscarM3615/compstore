@@ -1,5 +1,10 @@
 import { FormEvent } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect
+} from 'react-router-dom';
 
 import HomeView from 'views/index';
 import CategoriesView from 'views/categories/index';
@@ -25,7 +30,8 @@ const App = () => {
 				<Route path="/categories/:id" component={CategoryView} />
 				<Route path="/products/:id" component={ProductView} />
 
-				<Route path="*" component={NotFoundView} />
+				<Route path="not-found" component={NotFoundView} />
+				<Route path="*" component={() => <Redirect to="/not-found" />} />
 			</Switch>
 		</Router>
 	);

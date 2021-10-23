@@ -8,7 +8,9 @@ const products: Product[] = [
 		price: 50,
 		category: categories[0],
 		imageUrl:
-			'https://spy.com/wp-content/uploads/2020/12/CleanClipping-Recovered-10.png?w=1000&h=750&crop=1'
+			'https://spy.com/wp-content/uploads/2020/12/CleanClipping-Recovered-10.png?w=1000&h=750&crop=1',
+		description:
+			'Lorem repellendus quaerat quisquam vel expedita Nostrum quisquam facilis reiciendis excepturi distinctio delectus? Soluta neque delectus ullam asperiores accusantium? Repellat esse saepe mollitia explicabo error error. Aliquid sint dolor eveniet'
 	},
 	{
 		id: 2,
@@ -16,7 +18,9 @@ const products: Product[] = [
 		price: 100,
 		category: categories[0],
 		imageUrl:
-			'https://spy.com/wp-content/uploads/2020/12/CleanClipping-Recovered-10.png?w=1000&h=750&crop=1'
+			'https://spy.com/wp-content/uploads/2020/12/CleanClipping-Recovered-10.png?w=1000&h=750&crop=1',
+		description:
+			'Lorem repellendus quaerat quisquam vel expedita Nostrum quisquam facilis reiciendis excepturi distinctio delectus? Soluta neque delectus ullam asperiores accusantium? Repellat esse saepe mollitia explicabo error error. Aliquid sint dolor eveniet'
 	},
 	{
 		id: 3,
@@ -24,7 +28,9 @@ const products: Product[] = [
 		price: 25,
 		category: categories[1],
 		imageUrl:
-			'https://spy.com/wp-content/uploads/2020/12/CleanClipping-Recovered-10.png?w=1000&h=750&crop=1'
+			'https://spy.com/wp-content/uploads/2020/12/CleanClipping-Recovered-10.png?w=1000&h=750&crop=1',
+		description:
+			'Lorem repellendus quaerat quisquam vel expedita Nostrum quisquam facilis reiciendis excepturi distinctio delectus? Soluta neque delectus ullam asperiores accusantium? Repellat esse saepe mollitia explicabo error error. Aliquid sint dolor eveniet'
 	}
 ];
 
