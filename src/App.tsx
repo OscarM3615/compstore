@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import HomeView from 'views/index';
 import CategoriesView from 'views/categories';
+import NotFoundView from 'views/404';
 
 import NavigationBar from 'shared/components/NavigationBar';
 
@@ -18,6 +19,7 @@ const App = () => {
 			<Switch>
 				<Route exact path="/" component={HomeView} />
 				<Route path="/categories" component={CategoriesView} />
+				<Route path="*" component={NotFoundView} />
 			</Switch>
 		</Router>
 	);
