@@ -1,9 +1,15 @@
+import { useState, useEffect } from 'react';
 import ProductCard from 'components/home/ProductCard';
 import Title from 'shared/components/Title';
-import useProducts from 'shared/hooks/useProducts';
+import api from 'core/services/api';
+import type Product from 'shared/models/product';
 
 const HomeView = () => {
-	const products = useProducts();
+	const [products, setProducts] = useState<Product[]>([]);
+
+	useEffect(() => {
+		api.getProducts().then((data) => setProducts(data));
+	}, []);
 
 	return (
 		<section className="py-5">
