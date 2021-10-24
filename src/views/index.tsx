@@ -5,19 +5,27 @@ import useTitle from 'shared/hooks/useTitle';
 import api from 'core/services/api';
 import type Product from 'shared/models/product';
 
-const HomeView = () => {
+type PropType = {
+	search: string;
+};
+
+const HomeView = ({ search }: PropType) => {
 	const [products, setProducts] = useState<Product[]>([]);
 
 	useEffect(() => {
-		api.getProducts().then((data) => setProducts(data));
-	}, []);
+		if (search) api.searchProducts(search).then((data) => setProducts(data));
+		else api.getProducts().then((data) => setProducts(data));
+	}, [search]);
 
 	useTitle();
 
 	return (
 		<section className="py-5">
 			<div className="container">
-				<Title title="Productos disponibles" />
+				<Title
+					title="Productos disponibles"
+					subtitle={search ? `Búsqueda: ${search}` : undefined}
+				/>
 
 				<div className="row">
 					{products.map((product) => (

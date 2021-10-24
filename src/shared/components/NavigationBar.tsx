@@ -6,10 +6,12 @@ import Container from 'react-bootstrap/Container';
 import config from 'shared/config';
 
 type PropType = {
+	search: string;
+	setSearch: (value: string) => void;
 	onSearch?: FormEventHandler<HTMLFormElement>;
 };
 
-const NavigationBar = ({ onSearch }: PropType) => {
+const NavigationBar = ({ search, setSearch, onSearch }: PropType) => {
 	const location = useLocation();
 
 	return (
@@ -29,6 +31,8 @@ const NavigationBar = ({ onSearch }: PropType) => {
 								type="text"
 								className="form-control border-light"
 								placeholder="Buscar productos"
+								value={search}
+								onChange={(e) => setSearch(e.target.value)}
 							/>
 
 							<button className="btn btn-outline-light">

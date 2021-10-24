@@ -19,6 +19,10 @@ class ApiService {
 		return products.filter((product) => product.category.id === categoryId);
 	}
 
+	async searchProducts(search: string): Promise<Product[]> {
+		return products.filter((product) => product.name.includes(search));
+	}
+
 	async getCategories(): Promise<Category[]> {
 		return categories;
 	}

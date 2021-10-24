@@ -1,4 +1,4 @@
-import { FormEvent } from 'react';
+import { useState, FormEvent } from 'react';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -14,17 +14,25 @@ import NotFoundView from 'views/404';
 
 import NavigationBar from 'shared/components/NavigationBar';
 
-const navbarOnSearch = (event: FormEvent) => {
-	event.preventDefault();
-};
-
 const App = () => {
+	const [navbarValue, setNavbarValue] = useState<string>('');
+	const [search, setSearch] = useState<string>('');
+
+	const navbarOnSearch = (event: FormEvent) => {
+		event.preventDefault();
+		setSearch(navbarValue);
+	};
+
 	return (
 		<Router>
-			<NavigationBar onSearch={navbarOnSearch} />
+			<NavigationBar
+				search={navbarValue}
+				setSearch={setNavbarValue}
+				onSearch={navbarOnSearch}
+			/>
 
 			<Switch>
-				<Route exact path="/" component={HomeView} />
+				<Route exact path="/" component={() => <HomeView search={search} />} />
 				<Route exact path="/categories" component={CategoriesView} />
 
 				<Route path="/categories/:id" component={CategoryView} />
