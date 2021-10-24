@@ -16,7 +16,7 @@ const CategoriesView = () => {
 
 	return (
 		<section className="py-5">
-			<div className="container px-5">
+			<div className="container">
 				<Title title="Categorías" />
 
 				<div className="card">

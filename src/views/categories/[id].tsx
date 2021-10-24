@@ -32,7 +32,7 @@ const CategoryView = () => {
 
 	return (
 		<section className="py-5">
-			<div className="container px-5">
+			<div className="container">
 				{category ? (
 					<>
 						<Title title={category.name} />

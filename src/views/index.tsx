@@ -16,7 +16,7 @@ const HomeView = () => {
 
 	return (
 		<section className="py-5">
-			<div className="container px-5">
+			<div className="container">
 				<Title title="Productos disponibles" />
 
 				<div className="row">
