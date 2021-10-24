@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ProductCard from 'components/home/ProductCard';
+import ProductCard from 'shared/components/ProductCard';
 import Title from 'shared/components/Title';
 import api from 'core/services/api';
 import type Product from 'shared/models/product';
