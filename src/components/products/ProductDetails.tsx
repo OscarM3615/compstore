@@ -1,10 +1,12 @@
+import { MouseEventHandler } from 'react';
 import type Product from 'shared/models/product';
 
 type PropType = {
 	product: Product;
+	onOrder?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const ProductDetails = ({ product }: PropType) => {
+const ProductDetails = ({ product, onOrder }: PropType) => {
 	return (
 		<div className="card">
 			<div className="card-body">
@@ -32,7 +34,7 @@ const ProductDetails = ({ product }: PropType) => {
 							</div>
 						</div>
 
-						<button className="btn btn-primary w-100">
+						<button className="btn btn-primary w-100" onClick={onOrder}>
 							<i className="bi bi-bag-check"></i> Ordenar
 						</button>
 					</div>

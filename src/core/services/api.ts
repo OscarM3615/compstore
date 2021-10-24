@@ -29,6 +29,14 @@ class ApiService {
 		if (!category) throw new Error(`Category with ID ${id} not found.`);
 		return category;
 	}
+
+	async createOrder(
+		product: Product,
+		amount: number,
+		email: string
+	): Promise<void> {
+		console.log({ product, amount, total: product.price * amount, email });
+	}
 }
 
 export default new ApiService();
