@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import Title from 'shared/components/Title';
 import ProductDetails from 'components/products/ProductDetails';
 import Loading from 'shared/components/Loading';
+import useTitle from 'shared/hooks/useTitle';
 import api from 'core/services/api';
 import type Product from 'shared/models/product';
 
@@ -22,6 +23,8 @@ const ProductView = () => {
 				history.replace('/not-found');
 			});
 	}, [productId, history]);
+
+	useTitle(product?.name);
 
 	return (
 		<section className="py-4">

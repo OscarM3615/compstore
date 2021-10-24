@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Title from 'shared/components/Title';
+import useTitle from 'shared/hooks/useTitle';
 import api from 'core/services/api';
 import type Category from 'shared/models/category';
 
@@ -10,6 +11,8 @@ const CategoriesView = () => {
 	useEffect(() => {
 		api.getCategories().then((data) => setCategories(data));
 	}, []);
+
+	useTitle('Categorías');
 
 	return (
 		<section className="py-5">

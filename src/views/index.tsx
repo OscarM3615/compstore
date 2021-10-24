@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import ProductCard from 'shared/components/ProductCard';
 import Title from 'shared/components/Title';
+import useTitle from 'shared/hooks/useTitle';
 import api from 'core/services/api';
 import type Product from 'shared/models/product';
 
@@ -10,6 +11,8 @@ const HomeView = () => {
 	useEffect(() => {
 		api.getProducts().then((data) => setProducts(data));
 	}, []);
+
+	useTitle();
 
 	return (
 		<section className="py-5">

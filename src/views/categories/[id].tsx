@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import ProductCard from 'shared/components/ProductCard';
 import Title from 'shared/components/Title';
 import Loading from 'shared/components/Loading';
+import useTitle from 'shared/hooks/useTitle';
 import api from 'core/services/api';
 import type Product from 'shared/models/product';
 import type Category from 'shared/models/category';
@@ -26,6 +27,8 @@ const CategoryView = () => {
 
 		api.getProductsInCategory(+categoryId).then((data) => setProducts(data));
 	}, [categoryId, history]);
+
+	useTitle(category?.name);
 
 	return (
 		<section className="py-5">
