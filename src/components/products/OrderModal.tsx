@@ -8,9 +8,10 @@ type PropType = {
 	show: boolean;
 	product: Product;
 	onClose: () => void;
+	onSuccess: () => void;
 };
 
-const OrderModal = ({ show, product, onClose }: PropType) => {
+const OrderModal = ({ show, product, onClose, onSuccess }: PropType) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	const submitOrder = (event: FormEvent) => {
@@ -19,7 +20,7 @@ const OrderModal = ({ show, product, onClose }: PropType) => {
 		api
 			.createOrder(product, state.count, state.email)
 			.then(() => {
-				alert('Compra realizada.');
+				onSuccess();
 			})
 			.catch((err) => {
 				alert('Ocurrió un error en tu compra.');
