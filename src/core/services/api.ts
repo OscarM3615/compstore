@@ -20,7 +20,9 @@ class ApiService {
 	}
 
 	async searchProducts(search: string): Promise<Product[]> {
-		return products.filter((product) => product.name.includes(search));
+		return products.filter((product) =>
+			product.name.toLowerCase().includes(search.toLowerCase())
+		);
 	}
 
 	async getCategories(): Promise<Category[]> {
