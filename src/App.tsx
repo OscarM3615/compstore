@@ -38,7 +38,7 @@ const App = () => {
 				<Route path="/categories/:id" component={CategoryView} />
 				<Route path="/products/:id" component={ProductView} />
 
-				<Route path="not-found" component={NotFoundView} />
+				<Route path="/not-found" component={NotFoundView} />
 				<Route path="*" component={() => <Redirect to="/not-found" />} />
 			</Switch>
 		</Router>
