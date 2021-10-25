@@ -11,7 +11,7 @@ const ProductDetails = ({ product, onOrder }: PropType) => {
 		<div className="card">
 			<div className="card-body">
 				<div className="row">
-					<div className="col-lg-8">
+					<div className="col-lg-8 d-flex justify-content-center align-items-center">
 						<img
 							className="img-fluid rounded-3"
 							src={product.imageUrl}
@@ -21,7 +21,11 @@ const ProductDetails = ({ product, onOrder }: PropType) => {
 					<div className="col-lg-4 px-4 mt-3 mt-lg-0">
 						<p className="h5 pb-2 border-bottom">Detalles del producto</p>
 
-						<p className="card-text">{product.description}</p>
+						{product.description?.split('\n').map((line, index) => (
+							<p key={index} className="card-text">
+								{line}
+							</p>
+						))}
 
 						<div className="border-top border-bottom pt-4 pb-2 mb-4">
 							<div className="d-flex justify-content-between">
@@ -30,7 +34,7 @@ const ProductDetails = ({ product, onOrder }: PropType) => {
 							</div>
 							<div className="d-flex justify-content-between">
 								<p className="fw-bold">Precio</p>
-								<p>$ {product.price}</p>
+								<p className="text-success">$ {product.price}</p>
 							</div>
 						</div>
 
