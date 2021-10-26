@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, FormEvent } from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect
+} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import HomeView from 'views/index';
+import CategoriesView from 'views/categories/index';
+import CategoryView from 'views/categories/[id]';
+import ProductView from 'views/products/[id]';
+import NotFoundView from 'views/404';
+
+import NavigationBar from 'shared/components/NavigationBar';
+
+const App = () => {
+	const [navbarValue, setNavbarValue] = useState<string>('');
+	const [search, setSearch] = useState<string>('');
+
+	const navbarOnSearch = (event: FormEvent) => {
+		event.preventDefault();
+		setSearch(navbarValue);
+	};
+
+	return (
+		<Router>
+			<NavigationBar
+				search={navbarValue}
+				setSearch={setNavbarValue}
+				onSearch={navbarOnSearch}
+			/>
+
+			<Switch>
+				<Route exact path="/" component={() => <HomeView search={search} />} />
+				<Route exact path="/categories" component={CategoriesView} />
+
+				<Route path="/categories/:id" component={CategoryView} />
+				<Route path="/products/:id" component={ProductView} />
+
+				<Route path="/not-found" component={NotFoundView} />
+				<Route path="*" component={() => <Redirect to="/not-found" />} />
+			</Switch>
+		</Router>
+	);
+};
 
 export default App;

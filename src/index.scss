@@ -1,0 +1,8 @@
+// Override default variables.
+@import './styles/variables.scss';
+
+// Import Bootstrap styles.
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Custom style definitions.
+@import './styles/custom.scss';
