@@ -17,7 +17,9 @@ const ProductCard = ({ product }: PropType) => {
 					/>
 				</div>
 				<p className="h5 card-title">{product.name}</p>
-				<p className="h6 card-subtitle text-success">$ {product.price}</p>
+				<p className="h6 card-subtitle text-success">
+					$ {product.price.toLocaleString()}
+				</p>
 			</div>
 			<div className="card-footer d-flex align-items-center justify-content-between">
 				<Link
