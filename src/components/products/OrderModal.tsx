@@ -16,18 +16,20 @@ const OrderModal = ({ show, product, onClose, onSuccess }: PropType) => {
 
 	const submitOrder = (event: FormEvent) => {
 		event.preventDefault();
+		dispatch({ type: 'toggle_loading' });
 
 		api
 			.createOrder(product, state.count, state.email)
 			.then(() => {
+				dispatch({ type: 'toggle_loading' });
 				onSuccess();
+				onClose();
 			})
 			.catch((err) => {
 				alert('Ocurrió un error en tu compra.');
 				console.error(err);
+				dispatch({ type: 'toggle_loading' });
 			});
-
-		onClose();
 	};
 
 	return (
@@ -112,13 +114,27 @@ const OrderModal = ({ show, product, onClose, onSuccess }: PropType) => {
 				<Modal.Footer>
 					<button
 						type="button"
-						className="btn btn-outline-secondary"
+						className="btn btn-outline-secondary w-25"
 						onClick={onClose}
 					>
 						Cancelar
 					</button>
-					<button type="submit" className="btn btn-primary">
-						Ordenar
+					<button
+						type="submit"
+						className="btn btn-primary w-25"
+						disabled={state.loading}
+					>
+						{state.loading ? (
+							<>
+								<span
+									className="spinner-border spinner-border-sm"
+									role="status"
+									aria-hidden="true"
+								></span>
+							</>
+						) : (
+							'Ordenar'
+						)}
 					</button>
 				</Modal.Footer>
 			</form>

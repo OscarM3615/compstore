@@ -15,7 +15,13 @@ const NavigationBar = ({ search, setSearch, onSearch }: PropType) => {
 	const location = useLocation();
 
 	return (
-		<Navbar bg="primary" variant="dark" expand="lg">
+		<Navbar
+			bg="primary"
+			variant="dark"
+			expand="lg"
+			sticky="top"
+			collapseOnSelect
+		>
 			<Container fluid>
 				<Navbar.Brand as={Link} to="/">
 					{config.appName}
