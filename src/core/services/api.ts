@@ -41,6 +41,8 @@ class ApiService {
 		amount: number,
 		email: string
 	): Promise<void> {
+		await new Promise((r) => setTimeout(r, 1000));
+
 		console.log({ product, amount, total: product.price * amount, email });
 	}
 }
