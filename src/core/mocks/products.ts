@@ -319,7 +319,7 @@ Limpieza profunda para tus pantallas y TV.`
 		id: 22,
 		name: 'Office 365 Home Premium 5 Usuarios',
 		price: 1595,
-		category: categories[0],
+		category: categories[8],
 		imageUrl:
 			'https://http2.mlstatic.com/D_NQ_NP_754794-MLM31231946829_062019-O.webp',
 		description: `Licencia para 5 Usuarios, cada usuario lo registra con su correo propio, cada usuario puede instalar en 5 ordenadores, en una tablet y en un smartphone, para tener el control de la licencia utilizas la página de Microsoft, con esto comprobarás la legalidad de la licencia.`
