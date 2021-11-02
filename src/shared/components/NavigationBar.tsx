@@ -1,5 +1,5 @@
-import { FormEventHandler, ReactNode } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { FormEvent, ReactNode } from 'react';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
@@ -8,11 +8,20 @@ import config from 'shared/config';
 type PropType = {
 	search: string;
 	setSearch: (value: string) => void;
-	onSearch?: FormEventHandler<HTMLFormElement>;
+	onSearch?: () => void;
 };
 
 const NavigationBar = ({ search, setSearch, onSearch }: PropType) => {
 	const location = useLocation();
+	const history = useHistory();
+
+	const onSubmitForm = (event: FormEvent) => {
+		event.preventDefault();
+
+		if (location.pathname !== '/') history.push('/');
+
+		if (onSearch) onSearch();
+	};
 
 	return (
 		<Navbar
@@ -30,7 +39,7 @@ const NavigationBar = ({ search, setSearch, onSearch }: PropType) => {
 				<Navbar.Collapse id="navbarCollapse">
 					<form
 						className="d-flex mt-2 mt-lg-0 px-0 px-lg-4 w-100"
-						onSubmit={onSearch}
+						onSubmit={onSubmitForm}
 					>
 						<div className="input-group">
 							<input

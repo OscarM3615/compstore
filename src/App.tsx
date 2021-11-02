@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -18,8 +18,7 @@ const App = () => {
 	const [navbarValue, setNavbarValue] = useState<string>('');
 	const [search, setSearch] = useState<string>('');
 
-	const navbarOnSearch = (event: FormEvent) => {
-		event.preventDefault();
+	const navbarOnSearch = () => {
 		setSearch(navbarValue);
 	};
 
