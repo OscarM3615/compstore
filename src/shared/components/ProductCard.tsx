@@ -23,10 +23,10 @@ const ProductCard = ({ product }: PropType) => {
 			</div>
 			<div className="card-footer d-flex align-items-center justify-content-between">
 				<Link
-					to={`/categories/${product.category.id}`}
+					to={`/categories/${product.category}`}
 					className="badge bg-secondary text-decoration-none text-light"
 				>
-					{product.category.name}
+					{product.categoryName}
 				</Link>
 
 				<Link

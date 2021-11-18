@@ -30,7 +30,7 @@ const ProductDetails = ({ product, onOrder }: PropType) => {
 						<div className="border-top border-bottom pt-4 pb-2 mb-4">
 							<div className="d-flex justify-content-between">
 								<p className="fw-bold">Categoría</p>
-								<p>{product.category.name}</p>
+								<p>{product.categoryName}</p>
 							</div>
 							<div className="d-flex justify-content-between">
 								<p className="fw-bold">Precio</p>
