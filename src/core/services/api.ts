@@ -1,39 +1,61 @@
-import products from 'core/mocks/products';
-import categories from 'core/mocks/categories';
+import axios, { AxiosInstance } from 'axios';
+import { formStringify } from 'core/utils/http';
 import type Product from 'shared/models/product';
 import type Category from 'shared/models/category';
 
 class ApiService {
+	private api: AxiosInstance;
+
+	constructor() {
+		this.api = axios.create({
+			baseURL: 'https://compstore2.000webhostapp.com',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				Accept: 'application/json'
+			}
+		});
+	}
+
 	async getProducts(): Promise<Product[]> {
-		return products;
+		const response = await this.api.get(`/products.php`);
+		return response.data;
 	}
 
 	async getProduct(id: number): Promise<Product> {
-		const product = products.find((product) => product.id === id);
-
-		if (!product) throw new Error(`Product with ID ${id} not found.`);
-		return product;
+		const response = await this.api.post(
+			`/products.php`,
+			formStringify({ id })
+		);
+		return response.data;
 	}
 
 	async getProductsInCategory(categoryId: number): Promise<Product[]> {
-		return products.filter((product) => product.category.id === categoryId);
+		const response = await this.api.post(
+			`/products.php`,
+			formStringify({ categoryId })
+		);
+		return response.data;
 	}
 
 	async searchProducts(search: string): Promise<Product[]> {
-		return products.filter((product) =>
-			product.name.toLowerCase().includes(search.toLowerCase())
+		const response = await this.api.post(
+			`/products.php`,
+			formStringify({ search })
 		);
+		return response.data;
 	}
 
 	async getCategories(): Promise<Category[]> {
-		return categories;
+		const response = await this.api.post(`/categories.php`);
+		return response.data;
 	}
 
 	async getCategory(id: number): Promise<Category> {
-		const category = categories.find((category) => category.id === id);
-
-		if (!category) throw new Error(`Category with ID ${id} not found.`);
-		return category;
+		const response = await this.api.post(
+			`/categories.php`,
+			formStringify({ id })
+		);
+		return response.data;
 	}
 
 	async createOrder(
