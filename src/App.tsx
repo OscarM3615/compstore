@@ -13,6 +13,7 @@ import ProductView from 'views/products/[id]';
 import NotFoundView from 'views/404';
 
 import NavigationBar from 'shared/components/NavigationBar';
+import SearchContext from 'shared/context/Search';
 
 const App = () => {
 	const [navbarValue, setNavbarValue] = useState<string>('');
@@ -30,16 +31,18 @@ const App = () => {
 				onSearch={navbarOnSearch}
 			/>
 
-			<Switch>
-				<Route exact path="/" component={() => <HomeView search={search} />} />
-				<Route exact path="/categories" component={CategoriesView} />
+			<SearchContext.Provider value={search}>
+				<Switch>
+					<Route exact path="/" component={HomeView} />
+					<Route exact path="/categories" component={CategoriesView} />
 
-				<Route path="/categories/:id" component={CategoryView} />
-				<Route path="/products/:id" component={ProductView} />
+					<Route path="/categories/:id" component={CategoryView} />
+					<Route path="/products/:id" component={ProductView} />
 
-				<Route path="/not-found" component={NotFoundView} />
-				<Route path="*" component={() => <Redirect to="/not-found" />} />
-			</Switch>
+					<Route path="/not-found" component={NotFoundView} />
+					<Route path="*" component={() => <Redirect to="/not-found" />} />
+				</Switch>
+			</SearchContext.Provider>
 		</Router>
 	);
 };

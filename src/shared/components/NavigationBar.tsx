@@ -18,8 +18,9 @@ const NavigationBar = ({ search, setSearch, onSearch }: PropType) => {
 	const onSubmitForm = (event: FormEvent) => {
 		event.preventDefault();
 
-		if (location.pathname !== '/') history.push('/');
+		setSearch('');
 
+		if (location.pathname !== '/') history.push('/');
 		if (onSearch) onSearch();
 	};
 
@@ -44,13 +45,13 @@ const NavigationBar = ({ search, setSearch, onSearch }: PropType) => {
 						<div className="input-group">
 							<input
 								type="text"
-								className="form-control border-light"
+								className="form-control border-light shadow-none"
 								placeholder="Buscar productos"
 								value={search}
 								onChange={(e) => setSearch(e.target.value)}
 							/>
 
-							<button className="btn btn-outline-light">
+							<button className="btn btn-outline-light shadow-none">
 								<i className="bi bi-search"></i>
 							</button>
 						</div>
